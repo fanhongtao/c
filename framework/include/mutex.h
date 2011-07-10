@@ -4,8 +4,10 @@
  * Date: 2011-07-01
  */
 
-#ifndef SYNCHRONIZATION_H
-#define SYNCHRONIZATION_H
+#ifndef MUTEX_H
+#define MUTEX_H
+
+#include <pthread.h>
 
 /**
  * GNU/Linux provides mutexes, short for MUTual EXclusion locks. A mutex is a special lock 
@@ -57,6 +59,4 @@ private:
     CMutex mutex_;
 };
 
-#endif // SYNCHRONIZATION_H
-
-
+#endif // MUTEX_H
