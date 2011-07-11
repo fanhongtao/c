@@ -3,10 +3,10 @@ CPPFLAGS = -g -I ../include
 
 LIBS = -lgtest -lgtest_main
 
-objects = mutex_test.o
+objects = mutex_test.o  common_test.o
 
-mutex_test:$(objects)
-	$(CXX) -g -o mutex_test $(objects) $(LIBS)
+gtest:$(objects)
+	$(CXX) -g -o gtest $(objects) $(LIBS)
 
 clean:
 	rm -f *.o
