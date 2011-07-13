@@ -47,16 +47,47 @@ private:
 
 class CMutexGuard {
 public:
-    CMutexGuard(CMutex& mutex):mutex_(mutex) {
-        mutex_.Lock();
+    CMutexGuard(CMutex& mutex):p_mutex_(&mutex) {
+        p_mutex_->Lock();
     }
 
     ~CMutexGuard() {
-        mutex_.UnLock();
+        p_mutex_->UnLock();
+    }
+
+private:
+    CMutex * p_mutex_;
+};
+
+class CCondition {
+public:
+    CCondition() {
+        pthread_cond_init(&cond_, NULL);
+    }
+
+    ~CCondition() {
+        pthread_cond_destroy(&cond_);
+    }
+
+    int Wait() {
+        return pthread_cond_wait(&cond_, &mutex_.mutex());
+    }
+
+    int Signal() {
+        return pthread_cond_signal(&cond_);
+    }
+
+    CMutex & mutex() {
+        return mutex_;
+    }
+
+    pthread_cond_t & cond() {
+        return cond_;
     }
 
 private:
     CMutex mutex_;
+    pthread_cond_t  cond_;
 };
 
 #endif // MUTEX_H
