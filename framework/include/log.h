@@ -15,4 +15,6 @@
 #define LOG_T(...)
 #endif
 
+#define LOG_D(...)  do { printf(__VA_ARGS__); printf("\n"); } while(0)
+
 #endif // MUTEX_H
