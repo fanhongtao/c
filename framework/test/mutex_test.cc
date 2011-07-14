@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "mutex.h"
+#include "synchronization.h"
 
 /**
  * Test if guard works well

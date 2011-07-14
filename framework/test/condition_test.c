@@ -10,7 +10,7 @@
  * The main routine creates three threads. Two of the threads perform work and update a "count"
  * variable. The third thread waits until the count variable reaches a specified value.
  */
-#include "mutex.h"
+#include "synchronization.h"
 
 #include <stdio.h>
 #include <stdlib.h>
