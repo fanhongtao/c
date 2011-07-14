@@ -47,16 +47,16 @@ private:
 
 class CMutexGuard {
 public:
-    CMutexGuard(CMutex& mutex):p_mutex_(&mutex) {
-        p_mutex_->Lock();
+    CMutexGuard(CMutex& mutex):mutex_(mutex) {
+        mutex_.Lock();
     }
 
     ~CMutexGuard() {
-        p_mutex_->UnLock();
+        mutex_.UnLock();
     }
 
 private:
-    CMutex * p_mutex_;
+    CMutex & mutex_;
 };
 
 class CCondition {
