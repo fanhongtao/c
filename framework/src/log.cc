@@ -16,7 +16,7 @@ void set_log_level(LOG_LEVEL level) {
     g_log_level = level;
 }
 
-void write_log(LOG_LEVEL level, char * tag, char * file, int line, char * fmt, ...) {
+void write_log(LOG_LEVEL level, const char * tag, const char * file, int line, const char * fmt, ...) {
     if (level < g_log_level) return;
 
     char buff[BUF_SIZE];
@@ -29,7 +29,7 @@ void write_log(LOG_LEVEL level, char * tag, char * file, int line, char * fmt, .
 }
 
 
-void write_msg(LOG_LEVEL level, char * fmt, ...) {
+void write_msg(LOG_LEVEL level, const char * fmt, ...) {
     if (level < g_log_level) return;
 
     char buff[BUF_SIZE];
